@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP CVC 2025 - Gestione Cateteri Venosi Centrali</title>
+    <style>
+        :root {
+            --primary: #22c55e;
+            --primary-dark: #16a34a;
+            --secondary: #f59e0b;
+            --secondary-dark: #d97706;
+            --danger: #ef4444;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: var(--gray-100);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray-700);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary-dark);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background-color: transparent;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .features {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--gray-900);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .benefits {
+            padding: 4rem 0;
+            background-color: var(--gray-100);
+        }
+        
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .benefit-group h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit-list {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+        
+        .benefit-list li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .cta {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--gray-900);
+        }
+        
+        .cta p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--gray-700);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        footer {
+            background-color: var(--gray-800);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">APP CVC 2025</a>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#informazioni">Informazioni</a></li>
+                    <li><a href="#features">Funzionalità</a></li>
+                    <li><a href="#benefits">Vantaggi</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>APP CVC 2025</h1>
+            <p>Gestione digitale dei Cateteri Venosi Centrali in oncoematologia pediatrica</p>
+            <div class="cta-buttons">
+                <a href="#features" class="btn btn-primary">Scopri le Funzionalità</a>
+                <a href="#informazioni" class="btn btn-outline">Informazioni sui CVC</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="informazioni" class="features">
+        <div class="container">
+            <h2 class="section-title">Informazioni sui Cateteri Venosi Centrali</h2>
+            <div class="feature-card">
+                <h3>Cos'è un Catetere Venoso Centrale (CVC)?</h3>
+                <p>Un Catetere Venoso Centrale (CVC) è un dispositivo medico che viene inserito in una vena di grosso calibro, solitamente la vena giugulare interna, la vena succlavia o la vena femorale. Il catetere viene fatto avanzare fino a raggiungere la vena cava superiore o l'atrio destro del cuore.</p>
+                <p>I CVC sono utilizzati per la somministrazione di farmaci, nutrizione parenterale, prelievi di sangue e monitoraggio emodinamico. Sono particolarmente importanti in oncoematologia pediatrica, dove i pazienti necessitano di accessi venosi frequenti e duraturi per le terapie.</p>
+            </div>
+            
+            <div style="margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="feature-card">
+                    <h3>Tipi di CVC</h3>
+                    <ul style="list-style-position: inside; padding-left: 1rem;">
+                        <li><strong>CVC non tunnellizzati:</strong> Inseriti direttamente nella vena centrale, utilizzati per brevi periodi.</li>
+                        <li><strong>CVC tunnellizzati:</strong> Passano attraverso un tunnel sottocutaneo prima di entrare nella vena, riducendo il rischio di infezioni. Utilizzati per terapie a lungo termine.</li>
+                        <li><strong>Port (o Port-a-cath):</strong> Dispositivi impiantabili costituiti da un reservoir sottocutaneo collegato a un catetere inserito in una vena centrale. Completamente impiantati sotto la pelle.</li>
+                        <li><strong>PICC (Peripherally Inserted Central Catheter):</strong> Inseriti in una vena periferica del braccio e avanzati fino alla vena cava superiore.</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Caratteristiche dei CVC</h3>
+                    <ul style="list-style-position: inside; padding-left: 1rem;">
+                        <li><strong>Numero di lumi:</strong> I CVC possono avere uno o più lumi (canali), che permettono la somministrazione simultanea di farmaci incompatibili tra loro.</li>
+                        <li><strong>French:</strong> Unità di misura del diametro esterno del catetere. Un French equivale a 0,33 mm.</li>
+                        <li><strong>Materiale:</strong> Generalmente realizzati in silicone o poliuretano, materiali biocompatibili che riducono il rischio di trombosi.</li>
+                        <li><strong>Lunghezza:</strong> Varia in base al tipo di CVC e alle caratteristiche del paziente.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Funzionalità Principali</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Scansione QR Code</h3>
+                    <p>Accesso rapido ai dati del paziente tramite scansione del codice QR personale.</p>
+                    <p>Ogni paziente riceve un codice QR univoco che contiene un identificativo sicuro per accedere ai suoi dati in modo rapido e sicuro.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Calendario Medicazioni</h3>
+                    <p>Gestione delle medicazioni programmate con notifiche e promemoria.</p>
+                    <p>Il sistema tiene traccia delle medicazioni passate e future, inviando notifiche ai pazienti e ai caregiver per ricordare gli appuntamenti imminenti.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Monitoraggio Complicanze</h3>
+                    <p>Registrazione e monitoraggio delle complicanze del CVC (meccaniche, infettive, trombotiche).</p>
+                    <p>L'app permette di documentare dettagliatamente qualsiasi complicanza, facilitando il follow-up e l'analisi statistica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <h2 class="section-title">Vantaggi</h2>
+            <div class="benefits-container">
+                <div class="benefit-group">
+                    <h3>Per gli Operatori Sanitari</h3>
+                    <ul class="benefit-list">
+                        <li>Riduzione dei missing data</li>
+                        <li>Trasferimento diretto dei dati su database</li>
+                        <li>Estrazione dati per analisi statistiche in tempo reale</li>
+                        <li>Aggiornamento in tempo reale del materiale educativo</li>
+                    </ul>
+                </div>
+                
+                <div class="benefit-group">
+                    <h3>Per Pazienti e Caregiver</h3>
+                    <ul class="benefit-list">
+                        <li>Libretto elettronico che accompagna il paziente nel percorso di cure</li>
+                        <li>Eliminazione del formato cartaceo</li>
+                        <li>Accesso a materiale educativo e video dimostrativi</li>
+                        <li>Promemoria per le medicazioni programmate</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="cta">
+        <div class="container">
+            <h2>Informazioni sul Progetto</h2>
+            <p>L'APP CVC 2025 è un'applicazione sviluppata per la gestione dei Cateteri Venosi Centrali (CVC) in oncoematologia pediatrica. Il progetto nasce dall'esigenza di sostituire il tradizionale libretto cartaceo con un formato elettronico più efficiente, che permetta una migliore raccolta dati e un monitoraggio più accurato.</p>
+            <p>L'applicazione consente di registrare e monitorare i dati relativi all'inserimento, alla gestione e alla rimozione dei CVC, oltre a fornire informazioni educative per pazienti e caregiver sulla corretta gestione domiciliare del dispositivo.</p>
+            <div class="cta-buttons">
+                <a href="#features" class="btn btn-primary">Esplora le Funzionalità</a>
+                <a href="#informazioni" class="btn btn-secondary">Scopri di Più sui CVC</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>APP CVC 2025 - Gestione digitale dei Cateteri Venosi Centrali in oncoematologia pediatrica</p>
+            <p>&copy; 2025 APP CVC. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+</body>
+</html>
